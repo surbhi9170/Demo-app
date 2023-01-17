@@ -1,5 +1,5 @@
 .main-slider-container {
-  width: 95%;
+  width: inherit;
   height: 305px;
 }
 .slider {
@@ -18,7 +18,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  left: 40px;
+  left: inherit;
+  padding: 30px;
 }
 
 .slider-icon.left,

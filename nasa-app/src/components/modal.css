@@ -1,5 +1,6 @@
 body.active-modal {
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .btn-modal {
@@ -23,7 +24,7 @@ body.active-modal {
 }
 
 .overlay {
-    background: rgba(49,49,49,0.8);
+    background:rgb(49 49 49 / 24%);;
 }
 .modal-content {
     position: absolute;
@@ -31,7 +32,7 @@ body.active-modal {
     height: fit-content;
     transform: translate(-50%, -50%);
     line-height: 1.4;
-    background: grey;
+    background:  #222222;
    left: 50%;
    top: 50%; 
    margin-left: 35px;

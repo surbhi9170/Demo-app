@@ -3,7 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import NavBar from "./Navbar";
 import CardSlider from "./CardSlider";
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
 
@@ -34,6 +34,8 @@ export default function NasaPhoto() {
 
   return (
     <>
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    
     <NavBar />
     <div className="description" >
     <div>
@@ -62,8 +64,10 @@ export default function NasaPhoto() {
       
     </div>
     </div>
-    
+
     <CardSlider propsData={propsData}/>
+    <CardSlider propsData={propsData}/>
+    </SkeletonTheme>
     </>
   );
 }
