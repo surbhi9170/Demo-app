@@ -28,15 +28,15 @@ body.active-modal {
 }
 .modal-content {
     position: absolute;
-    width: fit-content;
-    height: fit-content;
+    width: 1000px;
+    height: 700px;
     transform: translate(-50%, -50%);
     line-height: 1.4;
     background:  #222222;
    left: 50%;
    top: 50%; 
    margin-left: 35px;
-   margin-top: -52px;
+   margin-top: 18px;
    display: inline-block;
   text-align: left;
   vertical-align: middle;

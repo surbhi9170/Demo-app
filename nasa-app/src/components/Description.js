@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 const Description=(props)=>{
 
     const photoData = props.photoData;
+    console.log("description",photoData)
     return (
             <div className="description" >
     <div>

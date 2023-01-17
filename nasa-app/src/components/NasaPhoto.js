@@ -13,11 +13,12 @@ const sliderClick = (slider)=>{
 
 export default function NasaPhoto() {
   const [photoData, setPhotoData] = useState(null);
+  const [photoDataBundle, setPhotoDataBundle] = useState(null);
 
   useEffect(() => {
     fetchPhoto();
 
-    async function fetchPhoto() {
+    async function fetchPhoto(date) {
       const res = await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
       );
@@ -27,8 +28,20 @@ export default function NasaPhoto() {
     }
   }, []);
 
-  const propsData = {photoData: photoData, clickEvent: sliderClick}
 
+  useEffect(() => {
+    fetchPhotoBundle();
+  async function fetchPhotoBundle() {
+    const res = await fetch(
+      `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=2022-09-20&end_date=2022-10-29&thumbs=true`
+    );
+    const data = await res.json();
+    setPhotoDataBundle(data);
+    console.log(data);
+  }
+}, []);
+console.log("photodatabundle",photoDataBundle)
+const propsData = {photoDataBundle: photoDataBundle, clickEvent: sliderClick}
   if (!photoData) return <div />;
 
 
@@ -65,7 +78,6 @@ export default function NasaPhoto() {
     </div>
     </div>
 
-    <CardSlider propsData={propsData}/>
     <CardSlider propsData={propsData}/>
     </SkeletonTheme>
     </>
