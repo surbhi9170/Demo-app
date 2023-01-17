@@ -7,6 +7,10 @@ import CardSlider from "./CardSlider";
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
 
+const sliderClick = (slider)=>{
+    alert("item selected");
+}
+
 export default function NasaPhoto() {
   const [photoData, setPhotoData] = useState(null);
 
@@ -23,7 +27,10 @@ export default function NasaPhoto() {
     }
   }, []);
 
+  const propsData = {photoData: photoData, clickEvent: sliderClick}
+
   if (!photoData) return <div />;
+
 
   return (
     <>
@@ -55,7 +62,8 @@ export default function NasaPhoto() {
       
     </div>
     </div>
-    <CardSlider/>
+    
+    <CardSlider propsData={propsData}/>
     </>
   );
 }
