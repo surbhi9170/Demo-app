@@ -28,7 +28,7 @@ body {
 .photo{
   width: inherit;
     object-fit: contain;
-    max-height: 80vh;
+    max-height: 60vh;
 }
 .nasa-photo{
   
