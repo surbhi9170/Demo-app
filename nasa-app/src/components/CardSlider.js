@@ -15,7 +15,6 @@ const CardSlider = (props) => {
 
   const l = Math.floor(photoData.length / 7);
   const verticalSlides = Array.from(Array(l).keys());
-  console.log("vvvbbjwnd", verticalSlides);
   const slides = [1, 2, 3, 4, 5, 6, 7];
   let slide;
 

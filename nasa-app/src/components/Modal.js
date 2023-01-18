@@ -3,7 +3,6 @@ import "./modal.css";
 
 export default function Modal() {
   const [modal, setModal] = useState(false);
-console.log("inside modal")
   const toggleModal = () => {
     setModal(!modal);
   };

@@ -32,7 +32,6 @@ export default function NasaPhoto() {
       );
       const data = await res.json();
       setPhotoData(data);
-      console.log(data);
     }
   }, []);
 
@@ -50,16 +49,13 @@ export default function NasaPhoto() {
         headers: {Accept: 'application/json',"Access-Control-Allow-Credentials" : true ,'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'application/json'},}).catch((err) => console.log(err));
     const data = await res.json();
     setPhotoDataBundle(data);
-    console.log(data);
   }
 }, []);
-console.log("photodatabundle",photoDataBundle)
 
 //modal
     const [modal, setModal] = useState(false);
     const [slider,setSlider]=useState(null);
     const toggleModal = (data) => {
-        console.log("slider dtat:::",data)
         setSlider(data);
         setModal(!modal);
       };
