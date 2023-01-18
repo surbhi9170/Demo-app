@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import NavBar from "./Navbar";
 import CardSlider from "./CardSlider";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Description from "./Description";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { json } from "react-router-dom";
+
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
 
@@ -34,16 +38,37 @@ export default function NasaPhoto() {
   async function fetchPhotoBundle() {
     const res = await fetch(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=2022-09-20&end_date=2022-10-29&thumbs=true`
-    );
+    ,{
+        method: 'GET',
+        mode: 'cors',
+        dataType: json,
+        headers: {Accept: 'application/json',"Access-Control-Allow-Credentials" : true ,'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'application/json'},}).catch((err) => console.log(err));
     const data = await res.json();
     setPhotoDataBundle(data);
     console.log(data);
   }
 }, []);
 console.log("photodatabundle",photoDataBundle)
-const propsData = {photoDataBundle: photoDataBundle, clickEvent: sliderClick}
+
+//modal
+    const [modal, setModal] = useState(false);
+    const [slider,setSlider]=useState(null);
+    const toggleModal = (data) => {
+        console.log("slider dtat:::",data)
+        setSlider(data);
+        setModal(!modal);
+      };
+    
+      if (modal) {
+        document.body.classList.add("active-modal");
+      } else {
+        document.body.classList.remove("active-modal");
+      }
+
+const propsData = {photoDataBundle: photoDataBundle, clickEvent: toggleModal}
   if (!photoData) return <div />;
 
+  
 
   return (
     <>
@@ -79,6 +104,21 @@ const propsData = {photoDataBundle: photoDataBundle, clickEvent: sliderClick}
     </div>
 
     <CardSlider propsData={propsData}/>
+    {modal && (
+                          <div className="modal">
+                            <div
+                              onClick={toggleModal}
+                              className="overlay"
+                            ></div>
+                            <div className="modal-content">
+                              <Description photoData={slider} />
+                              <AiFillCloseCircle
+                                className="close-modal"
+                                onClick={toggleModal}
+                              />
+                            </div>
+                          </div>
+                        )}
     </SkeletonTheme>
     </>
   );

@@ -4,12 +4,14 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { useState } from "react";
 import "./modal.css";
+import "./Modal"
 import Description from "./Description";
+import Modal from "./Modal";
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;
 
 const CardSlider = (props) => {
-//   const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(false);
   const photoData = props.propsData.photoDataBundle;
 
   if (!photoData) return <div />;
@@ -33,15 +35,15 @@ const CardSlider = (props) => {
       };
   //modal
 
-//   const toggleModal = () => {
-//     setModal(!modal);
-//   };
+  const toggleModal = () => {
+    setModal(!modal);
+  };
 
-//   if (modal) {
-//     document.body.classList.add("active-modal");
-//   } else {
-//     document.body.classList.remove("active-modal");
-//   }
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
 
   return (
     <div>
@@ -58,7 +60,7 @@ const CardSlider = (props) => {
                       <div
                         className="slider-card"
                         key={index}
-                        //onClick={toggleModal}
+                        onClick={()=>props.propsData.clickEvent(photoData[index+index1*7])}
                         style={{
                           backgroundImage: `url(${photoData[index+index1*7][mediaType(photoData[index+index1*7].media_type)]})`,
                         }}
@@ -94,7 +96,7 @@ const CardSlider = (props) => {
                               className="overlay"
                             ></div>
                             <div className="modal-content">
-                              <Description photoData={photoData[index]} />
+                              <Description photoData={photoData[index+index1*7]} />
                               <AiFillCloseCircle
                                 className="close-modal"
                                 onClick={toggleModal}

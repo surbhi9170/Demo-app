@@ -10,7 +10,8 @@ const Description=(props)=>{
     <div>
     <h1 className="title">{photoData.title}</h1>
     <p className="explanation">{photoData.explanation}</p>
-    <p className="author">Authored by <b>{photoData.copyright}</b></p>
+    
+    {photoData.copyright && <p className="author">Authored by <b>{photoData.copyright}</b></p>}
     </div>
     <div className="nasa-photo">
       {

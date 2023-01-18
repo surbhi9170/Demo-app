@@ -24,11 +24,11 @@ body.active-modal {
 }
 
 .overlay {
-    background:rgb(49 49 49 / 24%);;
+    background:rgb(49 49 49 / 84%);
 }
 .modal-content {
     position: absolute;
-    width: 1000px;
+    width: 1150px;
     height: 700px;
     transform: translate(-50%, -50%);
     line-height: 1.4;
@@ -42,7 +42,9 @@ body.active-modal {
   vertical-align: middle;
 }
 .photo-modal{
-    max-height: 50vh !important;
+    /* max-height: 50vh !important; */
+    width: 400px;
+    height: 300px;
 }
 .close-modal {
     position: absolute;
