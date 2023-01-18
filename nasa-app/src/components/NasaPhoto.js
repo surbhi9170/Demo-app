@@ -103,7 +103,7 @@ const propsData = {photoDataBundle: photoDataBundle, clickEvent: toggleModal}
             className="photo"
           />
         ))
-      }
+       || <Skeleton height={300} width={300}/>}
       
       {/* <p className="date">{photoData.date}</p> */}
       

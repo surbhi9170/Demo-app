@@ -47,6 +47,7 @@
   background-size: cover;
   border-radius: 10px;
   display: inline-block;
+  position: relative;
   margin-left: 10px;
   margin-right: 10px;
   box-shadow: 2px 2px 2px 2px rgb(0 0 0 /12%);
@@ -88,4 +89,19 @@
   background: #00000078;
   height: 40px;
   border-radius: 10px;
+}
+
+.overlay-play-button__overlay {
+  border: 0.25rem solid #fff;
+    border-radius: 9999px;
+    /* height: 3rem;
+    width: 3rem; */
+
+    /* Center the content */
+  width: fit-content;
+  height: fit-content;
+  transform: translate(600%, 500%);
+  position: absolute;
+  top: 0;
+  left: 0;
 }

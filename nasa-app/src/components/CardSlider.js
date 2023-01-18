@@ -1,13 +1,15 @@
 import React from "react";
 import "./slider.css";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle,AiFillPlayCircle } from "react-icons/ai";
 import { useState } from "react";
 import "./modal.css";
 import "./Modal"
 import Description from "./Description";
 import Modal from "./Modal";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
+
 // const apiKey = process.env.REACT_APP_NASA_KEY;
 
 const CardSlider = (props) => {
@@ -45,6 +47,7 @@ const CardSlider = (props) => {
     document.body.classList.remove("active-modal");
   }
 
+  
   return (
     <div>
       {verticalSlides.map(
@@ -65,23 +68,13 @@ const CardSlider = (props) => {
                           backgroundImage: `url(${photoData[index+index1*7][mediaType(photoData[index+index1*7].media_type)]})`,
                         }}
                       >
-                        {console.log(mediaType(photoData[index+index1*7].media_type))}
                         {/* {
-        (photoData.media_type = "image" ? (
-          <div className="slider-card-image" style={{backgroundImage:`url(${photoData.url})`}} />
-        ) : (
-          <iframe
-            title="space-video"
-            src={photoData.url}
-            frameBorder="0"
-            gesture="media"
-            allow="encrypted-media"
-            allowFullScreen
-            className="photo"
-          />
-        ))
-      }
-                */}
+                          (photoData[index+index1*7].media_type==="video")&&
+                          <button className="overlay-button">
+                          <AiFillPlayCircle className="overlay-play-button__overlay"></AiFillPlayCircle>
+                          </button>
+                        } */}
+
                         <div className="slider-card-title-bg">
                           <p className="slider-card-title">
                             {photoData[index+index1*7].title.substring(0, 20)}
@@ -89,23 +82,11 @@ const CardSlider = (props) => {
                             {photoData[index+index1*7].date}
                           </p>
                         </div>
-                        {/* <p className="slider-card-description">{photoData.explanation}</p> */}
-                        {/* {modal && (
-                          <div className="modal">
-                            <div
-                              onClick={toggleModal}
-                              className="overlay"
-                            ></div>
-                            <div className="modal-content">
-                              <Description photoData={photoData[index+index1*7]} />
-                              <AiFillCloseCircle
-                                className="close-modal"
-                                onClick={toggleModal}
-                              />
-                            </div>
-                          </div>
-                        )} */}
+                        {
+                          (photoData[index+index1*7].media_type==="video")&&
+                          <AiFillPlayCircle className="overlay-play-button__overlay" onClick={event =>  window.location.href=`${photoData[index+index1*7].url}`}>play</AiFillPlayCircle>}
                       </div>
+                      
                     );
                   })
                 )}

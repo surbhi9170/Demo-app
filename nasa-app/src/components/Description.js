@@ -1,6 +1,4 @@
 import React from "react";
-import Skeleton from "react-loading-skeleton";
-
 const Description=(props)=>{
 
     const photoData = props.photoData;
