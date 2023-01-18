@@ -65,6 +65,7 @@ const CardSlider = (props) => {
                           backgroundImage: `url(${photoData[index+index1*7][mediaType(photoData[index+index1*7].media_type)]})`,
                         }}
                       >
+                        {console.log(mediaType(photoData[index+index1*7].media_type))}
                         {/* {
         (photoData.media_type = "image" ? (
           <div className="slider-card-image" style={{backgroundImage:`url(${photoData.url})`}} />

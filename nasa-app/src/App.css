@@ -90,6 +90,15 @@ color: #FFFFFF;
 .nasa-photo .explanation {
   color: #bbb;
 }
+.name{
+  margin: unset;
+  padding-left: 10px;
+}
+.logo-name{
+  display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
 .header {
   padding: 20px;
   display: flex;
