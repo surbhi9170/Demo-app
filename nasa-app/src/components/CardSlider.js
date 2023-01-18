@@ -1,19 +1,14 @@
 import React from "react";
 import "./slider.css";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { AiFillCloseCircle,AiFillPlayCircle } from "react-icons/ai";
-import { useState } from "react";
+import { AiFillPlayCircle } from "react-icons/ai";
 import "./modal.css";
 import "./Modal"
-import Description from "./Description";
-import Modal from "./Modal";
-import Skeleton from "react-loading-skeleton";
-import { useNavigate } from "react-router-dom";
+
+
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;
 
 const CardSlider = (props) => {
-  const [modal, setModal] = useState(false);
   const photoData = props.propsData.photoDataBundle;
 
   if (!photoData) return <div />;
@@ -22,7 +17,7 @@ const CardSlider = (props) => {
   const verticalSlides = Array.from(Array(l).keys());
   console.log("vvvbbjwnd", verticalSlides);
   const slides = [1, 2, 3, 4, 5, 6, 7];
-  let slide,type;
+  let slide;
 
   const mediaType = (type) => {
        if (type==="image")
@@ -35,18 +30,6 @@ const CardSlider = (props) => {
          return "thumbnail_url";
        }
       };
-  //modal
-
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
-
   
   return (
     <div>

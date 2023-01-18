@@ -14,9 +14,9 @@ import NasaPhotoSkeleton from "./NasaPhotoSkeleton";
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
 
-const sliderClick = (slider)=>{
-    alert("item selected");
-}
+// const sliderClick = (slider)=>{
+//     alert("item selected");
+// }
 
 export default function NasaPhoto() {
   const [photoData, setPhotoData] = useState(null);
