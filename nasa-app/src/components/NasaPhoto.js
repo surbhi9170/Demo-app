@@ -7,6 +7,9 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import Description from "./Description";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { json } from "react-router-dom";
+import "react-loading-skeleton/dist/skeleton.css";
+import CardSkeleton from "./CardSkeleton";
+import NasaPhotoSkeleton from "./NasaPhotoSkeleton";
 
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
@@ -22,6 +25,7 @@ export default function NasaPhoto() {
   useEffect(() => {
     fetchPhoto();
 
+    //photo of the day
     async function fetchPhoto(date) {
       const res = await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
@@ -33,6 +37,7 @@ export default function NasaPhoto() {
   }, []);
 
 
+  //bulk data using start date and end date
   useEffect(() => {
     fetchPhotoBundle();
   async function fetchPhotoBundle() {
@@ -75,6 +80,7 @@ const propsData = {photoDataBundle: photoDataBundle, clickEvent: toggleModal}
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
     
     <NavBar />
+    {!photoData && <NasaPhotoSkeleton/>}
     <div className="description" >
     <div>
     <h1 className="title">{photoData.title}</h1>
@@ -82,9 +88,10 @@ const propsData = {photoDataBundle: photoDataBundle, clickEvent: toggleModal}
     <p className="author">Authored by <b>{photoData.copyright}</b></p>
     </div>
     <div className="nasa-photo">
+    
       {
         (photoData.media_type = "image" ? (
-          <img className="photo" src={photoData.url} alt={photoData.title} />
+          <img className="photo" src={photoData.url || <Skeleton circle width={6}/>} alt={photoData.title} />
         ) : (
           <iframe
             title="space-video"
@@ -102,7 +109,7 @@ const propsData = {photoDataBundle: photoDataBundle, clickEvent: toggleModal}
       
     </div>
     </div>
-
+{!photoDataBundle && <CardSkeleton/>}
     <CardSlider propsData={propsData}/>
     {modal && (
                           <div className="modal">

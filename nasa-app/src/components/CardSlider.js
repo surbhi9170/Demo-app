@@ -7,7 +7,7 @@ import "./modal.css";
 import "./Modal"
 import Description from "./Description";
 import Modal from "./Modal";
-
+import Skeleton from "react-loading-skeleton";
 // const apiKey = process.env.REACT_APP_NASA_KEY;
 
 const CardSlider = (props) => {
